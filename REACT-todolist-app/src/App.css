@@ -1,0 +1,82 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(233, 233, 233);
+  color: black;
+}
+
+.app_container h1{
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+h1{
+  font-size: 8em;
+  font-weight: 200;
+  color: #b83f45;
+  text-rendering: optimizeLegibility;
+  width: 100%;
+  margin: 0;
+}
+
+input[type="text"] {
+  font-size: 2.5em;
+  background-color: rgb(250, 250, 250);
+  border: none;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, .3);
+  padding: 1rem 1rem 1rem 3.75rem;
+  color: #333;
+}
+
+input:focus {
+  border: 2px solid rgba(184, 63, 69, 0.58);
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+li {
+  width: 30%;
+  font-size: 2.5em;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  color: #444;
+}
+
+input[type="checkbox"]{
+  margin-right: 1rem;
+}
+
+button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: rgb(233, 233, 233);
+  color:#b83f45;
+}
+button:hover {
+  opacity: .75;
+}
