@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function App() {
   const [userInput, setUserInput] = useState("");
   const [toDos, setToDos] = useState([]);
+  const [filter, setFilter] = useState("all"); //"active" , "completed"
 
   return (
     <section className="app_container">
@@ -56,7 +57,7 @@ export default function App() {
                   </label>
                 </div>
                 <button
-                  className="delete_toDo"
+                  className="delete_toDo_button"
                   onClick={() => {
                     const afterDeletingToDos = toDos.filter(
                       (item) => item.id !== toDo.id
@@ -70,6 +71,52 @@ export default function App() {
             );
           })}
         </ul>
+        <footer className="footer_container">
+          <div className="items_left_container">
+            {toDos.length}
+            {toDos.length <= 1 ? " item" : " items"} left!
+          </div>
+          <div className="filters_container">
+            <button
+              className="filter_button"
+              onClick={() => {
+                setFilter("all");
+                const newArray = [...toDos];
+                const allToDos = newArray.filter((toDo) => toDo);
+                setToDos(allToDos);
+              }}
+            >
+              All
+            </button>
+            <button
+              className="filter_button"
+              onClick={() => {
+                setFilter("active");
+                const newArray = [...toDos];
+                const activeToDos = newArray.filter((toDo) => !toDo.completed);
+                setToDos(activeToDos);
+              }}
+            >
+              Active
+            </button>
+            <button
+              className="filter_button"
+              onClick={() => {
+                setFilter("completed");
+                const newArray = [...toDos];
+                const completedToDos = newArray.filter(
+                  (toDo) => toDo.completed
+                );
+                setToDos(completedToDos);
+              }}
+            >
+              Completed
+            </button>
+          </div>
+          <div className="clear_completed_container">
+            <button className="clear_completed_button">Clear completed</button>
+          </div>
+        </footer>
       </main>
     </section>
   );

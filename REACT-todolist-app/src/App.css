@@ -12,7 +12,6 @@ body {
   font-size: 10px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(233, 233, 233);
-  color: black;
 }
 
 .app_container h1{
@@ -68,7 +67,7 @@ input[type="checkbox"]{
   margin-right: 1rem;
 }
 
-button {
+.delete_toDo_button {
   border: 1px solid transparent;
   font-size: 1em;
   font-weight: 600;
@@ -77,6 +76,46 @@ button {
   background-color: rgb(233, 233, 233);
   color:#b83f45;
 }
-button:hover {
+.delete_toDo_button:hover {
   opacity: .75;
+}
+
+.footer_container {
+  width: 30%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #222;
+}
+
+.filter_button{
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: rgb(233, 233, 233);
+  color: #222;
+}
+
+.filter_button:hover {
+  border: 1px solid #b83f45;
+}
+
+.filter_button:focus {
+  border: 2px solid rgba(184, 63, 69, 0.58);
+}
+
+.clear_completed_button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: rgb(233, 233, 233);
+  color: #222;
+}
+
+.clear_completed_button:hover {
+  text-decoration: underline;
 }
