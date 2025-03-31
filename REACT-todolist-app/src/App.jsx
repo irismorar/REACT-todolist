@@ -6,6 +6,18 @@ export default function App() {
   const [toDos, setToDos] = useState([]);
   const [filter, setFilter] = useState("all"); //"active" , "completed"
 
+  const filteredToDos = toDos.filter((toDo) => {
+    if (filter === "all") {
+      return true;
+    }
+    if (filter === "active") {
+      return !toDo.completed;
+    }
+    if (filter === "completed") {
+      return toDo.completed;
+    }
+  });
+
   return (
     <section className="app_container">
       <header>
@@ -31,7 +43,7 @@ export default function App() {
       </header>
       <main className="main">
         <ul>
-          {toDos.map((toDo) => {
+          {filteredToDos.map((toDo) => {
             return (
               <li key={toDo.id}>
                 <div className="checkbox_text_container">
@@ -71,52 +83,50 @@ export default function App() {
             );
           })}
         </ul>
-        <footer className="footer_container">
-          <div className="items_left_container">
-            {toDos.length}
-            {toDos.length <= 1 ? " item" : " items"} left!
-          </div>
-          <div className="filters_container">
-            <button
-              className="filter_button"
-              onClick={() => {
-                setFilter("all");
-                const newArray = [...toDos];
-                const allToDos = newArray.filter((toDo) => toDo);
-                setToDos(allToDos);
-              }}
-            >
-              All
-            </button>
-            <button
-              className="filter_button"
-              onClick={() => {
-                setFilter("active");
-                const newArray = [...toDos];
-                const activeToDos = newArray.filter((toDo) => !toDo.completed);
-                setToDos(activeToDos);
-              }}
-            >
-              Active
-            </button>
-            <button
-              className="filter_button"
-              onClick={() => {
-                setFilter("completed");
-                const newArray = [...toDos];
-                const completedToDos = newArray.filter(
-                  (toDo) => toDo.completed
-                );
-                setToDos(completedToDos);
-              }}
-            >
-              Completed
-            </button>
-          </div>
-          <div className="clear_completed_container">
-            <button className="clear_completed_button">Clear completed</button>
-          </div>
-        </footer>
+        {toDos.length && (
+          <footer className="footer_container">
+            <div className="items_left_container">
+              {toDos.length}
+              {toDos.length <= 1 ? " item" : " items"} left!
+            </div>
+            <div className="filters_container">
+              <button
+                className="filter_button"
+                onClick={() => {
+                  setFilter("all");
+                }}
+              >
+                All
+              </button>
+              <button
+                className="filter_button"
+                onClick={() => {
+                  setFilter("active");
+                }}
+              >
+                Active
+              </button>
+              <button
+                className="filter_button"
+                onClick={() => {
+                  setFilter("completed");
+                }}
+              >
+                Completed
+              </button>
+            </div>
+            <div className="clear_completed_container">
+              <button
+                className="clear_completed_button"
+                onClick={() => {
+                  setToDos(toDos.filter((toDo) => !toDo.completed));
+                }}
+              >
+                Clear completed
+              </button>
+            </div>
+          </footer>
+        )}
       </main>
     </section>
   );
